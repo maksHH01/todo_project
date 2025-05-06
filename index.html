@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Roboto+Flex:opsz,wght@8..144,400;8..144,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content_main">
+        <section class="time">
+          <div class="weekday" id="weekday"></div>
+          <div class="day-month" id="daymonth"></div>
+        </section>
+        <section class="search">
+          <form>
+            <label for="search_input">
+              <input id="search_input" type="text" placeholder="Поиск" />
+              <img id="search_icon" src="/img/icon (1).svg" alt="search-icon" />
+            </label>
+          </form>
+        </section>
+        <section class="statuses paragraph_styles">
+          <button class="all button_styles selected">Все</button>
+          <button class="active button_styles">Активные</button>
+          <button class="finished button_styles">Завершенные</button>
+        </section>
+        <section class="list">
+          <label>
+            <input
+              class="checkbox_style"
+              type="checkbox"
+              name="checked"
+              value="yes"
+            />
+          </label>
+          <div class="todo">
+            <p class="when_todo"></p>
+            <p class="what_todo"></p>
+          </div>
+        </section>
+      </div>
+      <button class="add_btn"></button>
+    </div>
+    <div class="overwiev"></div>
+    <section class="modal">
+      <div class="modal_content">
+        <div class="swipe_indicator"></div>
+        <form class="modal_form">
+          <input
+            class="about_input modal_input_add"
+            type="text"
+            name="about"
+            placeholder="Описание"
+          />
+          <input
+            class="about_input modal_input_date"
+            type="datetime-local"
+            name="date"
+            placeholder="Дата и время"
+          />
+          <span class="error_message"></span>
+        </form>
+        <div class="switch_row">
+          <label class="notforget">Напомнить мне</label>
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="modal_buttons">
+          <form class="modal_form_btn">
+            <button class="modal_btn_first btn_styles">Добавить</button>
+            <button class="modal_btn_second btn_styles">Отмена</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script src="/script.js"></script>
+  </body>
+</html>
