@@ -1,0 +1,43 @@
+@mixin flexBox($type: flex, $justify: center, $align: center) {
+  display: $type;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin flex-column($type: flex, $column: column) {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex($type: flex) {
+  display: $type;
+}
+
+@mixin column($type: column) {
+  flex-direction: $type;
+}
+
+@mixin flex-column($typeDisplay: flex, $typeColumn: column) {
+  display: $typeDisplay;
+  flex-direction: $typeColumn;
+}
+
+@mixin reset-component-defaults {
+  border: none;
+  outline: none;
+  appearance: none;
+}
+
+@mixin general-body {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: normal;
+  background: linear-gradient(135deg, #cab1ed, #a1c4fd);
+}
+
+@mixin font-size20($size: 20px) {
+  font-size: $size;
+}

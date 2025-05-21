@@ -1,7 +1,9 @@
 const today = new Date();
 
-const weekday = today.toLocaleDateString("eu-EU", { weekday: "long" });
-const dayMonth = today.toLocaleDateString("eu-EU", {
+const weekday = today.toLocaleDateString(navigator.language || "ru-RU", {
+  weekday: "long",
+});
+const dayMonth = today.toLocaleDateString(navigator.language || "ru-RU", {
   day: "numeric",
   month: "long",
 });
@@ -22,7 +24,6 @@ const modalForm = document.querySelector(".modal_form_btn");
 const statusMessage = document.querySelector(".error_message");
 const listTodo = document.querySelector(".list");
 const overwiev = document.querySelector(".overwiev");
-// const checkBox = document.querySelector(".checkbox_style");
 
 const buttons = document.querySelectorAll(".button_styles");
 
@@ -32,7 +33,10 @@ const statuses = document.querySelector(".statuses");
 
 /*===========modal swipe ================*/
 const now = new Date();
-const localISOTime = now.toISOString().slice(0, 16);
+const localISOTime = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
+  .toISOString()
+  .slice(0, 16);
+
 modalInpDate.min = localISOTime;
 
 let originalStatusesContent = statuses.innerHTML;
@@ -150,17 +154,12 @@ modalForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const title = modalInpAdd.value;
-  // const date = modalInpDate.value;
   const dateTimeValue = modalInpDate.value;
 
   if (!title || !dateTimeValue) {
     showStatusMessage("Заполните пожалуйста все поля");
     return;
   }
-
-  // const now = new Date();
-  // const hours = String(now.getHours()).padStart(2, "0");
-  // const minutes = String(now.getMinutes()).padStart(2, "0");
 
   const [date, time] = dateTimeValue.split("T");
 
@@ -284,3 +283,37 @@ function checkEmptyListAndShowMessage() {
     existing.remove();
   }
 }
+
+/*==============search==============*/
+
+const searchInput = document.querySelector("#search_input");
+
+function renderFilteredList(filteredSearch) {
+  listTodo.innerHTML = "";
+  if (filteredSearch.length === 0) {
+    const emptyMessage = document.createElement("p");
+    emptyMessage.textContent = "Совпадений не найдено";
+    emptyMessage.classList.add("empty_message");
+    listTodo.appendChild(emptyMessage);
+  } else {
+    filteredSearch.forEach((todo) => renderTodoItem(todo));
+  }
+}
+
+searchInput.addEventListener("input", () => {
+  const input = searchInput.value.trim().toLowerCase();
+  const filteredSearch = todoList.filter((item) =>
+    item.title.toLowerCase().includes(input)
+  );
+  renderFilteredList(filteredSearch);
+});
+
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    const input = searchInput.value.trim().toLowerCase();
+    const filteredSearch = todoList.filter((item) =>
+      item.title.toLowerCase().includes(input)
+    );
+    renderFilteredList(filteredSearch);
+  }
+});

@@ -1,0 +1,52 @@
+@use "../mixins" as *;
+@use "../variables" as variables;
+
+.content_main {
+  @include flex-column;
+  gap: variables.$default-gap;
+
+  .time {
+    @include flex-column;
+    gap: 4px;
+
+    .weekday {
+      @include font-size20;
+      font-weight: variables.$weight500;
+    }
+    .day-month {
+      font-size: 15px;
+    }
+  }
+}
+
+.search {
+  form {
+    label {
+      position: relative;
+
+      input#search_input {
+        background-color: variables.$search-bg;
+        color: variables.$search-input;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        padding: 10px 0 10px 16px;
+        width: 100%;
+        border: none;
+        border-radius: 20px;
+        font-size: 16px;
+
+        &:focus {
+          border: 0.5px solid #b38ee7;
+          outline: none;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      #search_icon {
+        position: absolute;
+        right: 13px;
+        top: 2px;
+      }
+    }
+  }
+}

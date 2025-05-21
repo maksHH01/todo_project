@@ -1,0 +1,92 @@
+@use "./reset";
+@use "./mixins" as *;
+@use "./variables" as variables;
+
+@use "./components/searchForm";
+@use "./components/listContainer";
+@use "./components/addForm";
+
+// variables
+// nesting
+// mixins
+// extend
+// &:, &::
+// use
+
+body {
+  @include general-body;
+  color: variables.$font-color;
+  font-size: clamp(14px, 2vw, 18px);
+}
+.container {
+  background-color: variables.$bg-color;
+  @include flex-column;
+  padding: 24px 16px 16px 16px;
+  justify-content: space-between;
+  max-width: 428px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+@media screen and (max-width: 425px) {
+  .statuses {
+    .button_styles {
+      &:hover {
+      }
+    }
+    .all {
+    }
+    .active {
+    }
+
+    .finished {
+      text-align: end;
+      padding-right: 1%;
+    }
+
+    .selected {
+      &::before {
+      }
+
+      &:nth-child(1)::before {
+        left: 30px;
+      }
+      &:nth-child(3)::before {
+        left: 6px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .statuses {
+    .button_styles {
+      &:hover {
+      }
+    }
+    .all {
+    }
+
+    .active {
+    }
+
+    .finished {
+      padding-right: 1%;
+    }
+
+    .selected {
+      &::before {
+      }
+
+      &:nth-child(1)::before {
+        left: 25px;
+      }
+      &:nth-child(2)::before {
+        left: 9px;
+      }
+      &:nth-child(3)::before {
+        left: 3px;
+      }
+    }
+  }
+}

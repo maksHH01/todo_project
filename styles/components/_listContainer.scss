@@ -1,0 +1,109 @@
+@use "../mixins" as *;
+@use "../variables" as variables;
+
+.paragraph_styles {
+  @include font-size20;
+  font-weight: variables.$weight500;
+}
+.statuses {
+  @include flex;
+  margin: 4px 0px;
+
+  .button_styles {
+    text-align: center;
+    font-size: 14px;
+    font-weight: variables.$weight500;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    border: 1px solid #79747e;
+    padding: 10px 0px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: variables.$secondary-color;
+      box-shadow: 1px 2px 2px variables.$secondary-color;
+    }
+  }
+
+  .all {
+    width: 100%;
+    background-color: variables.$secondary-color;
+    border-right: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: relative;
+  }
+
+  .active {
+    width: 100%;
+  }
+  .finished {
+    width: 100%;
+    border-left: none;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-right: 4%;
+    text-align: end;
+  }
+
+  .selected {
+    background-color: variables.$secondary-color;
+    position: relative;
+    &::before {
+      content: "";
+      background-image: url("../img/icon.svg");
+      background-repeat: no-repeat;
+      background-size: 15px 15px;
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      top: 12px;
+      left: 10px;
+    }
+    &:nth-child(1)::before {
+      top: 12px;
+      left: 30px;
+    }
+    &:nth-child(3)::before {
+      top: 12px;
+      left: 6px;
+    }
+  }
+}
+
+.list {
+  border-radius: 1%;
+  padding: 6px 3px;
+  @include flex-column;
+
+  .list_style {
+    @include flex;
+    gap: variables.$default-gap;
+    align-items: center;
+    padding: 8px 12px 10px 16px;
+    border-radius: 16px;
+    background-color: variables.$secondary-color;
+    margin-bottom: 5px;
+  }
+
+  .checkbox_style {
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+    border: 2px solid variables.$search-input;
+    accent-color: variables.$secondary-color;
+  }
+
+  .todo {
+    @include flex-column;
+    gap: 8px;
+
+    .when_todo {
+      font-size: 14px;
+    }
+
+    .what_todo {
+      font-size: 16px;
+    }
+  }
+}

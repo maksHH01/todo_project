@@ -9,7 +9,7 @@
     />
 
     <title>Document</title>
-    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="/styles/index.css" />
   </head>
   <body>
     <div class="container">
@@ -60,10 +60,10 @@
             placeholder="Описание"
           />
           <input
+            placeholder="Дата и время"
             class="about_input modal_input_date"
             type="datetime-local"
             name="date"
-            placeholder="Дата и время"
           />
           <span class="error_message"></span>
         </form>
@@ -76,7 +76,9 @@
         </div>
         <div class="modal_buttons">
           <form class="modal_form_btn">
-            <button class="modal_btn_first btn_styles">Добавить</button>
+            <button type="submit" class="modal_btn_first btn_styles">
+              Добавить
+            </button>
             <button class="modal_btn_second btn_styles">Отмена</button>
           </form>
         </div>
