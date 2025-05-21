@@ -84,10 +84,6 @@ overwiev.addEventListener("click", closeModal);
 
 /*=======modal inputs ===============*/
 
-modalInpDate.addEventListener("click", () => {
-  modalInpDate.showPicker?.();
-});
-
 function renderTodoItem(todo) {
   const todoItem = document.createElement("div");
   todoItem.classList.add("list_style");
@@ -316,4 +312,11 @@ searchInput.addEventListener("keydown", (e) => {
     );
     renderFilteredList(filteredSearch);
   }
+});
+
+flatpickr(".modal_input_date", {
+  enableTime: true,
+  dateFormat: "Y-m-d\\TH:i",
+  time_24hr: true,
+  locale: "ru",
 });
