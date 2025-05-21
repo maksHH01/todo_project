@@ -314,9 +314,11 @@ searchInput.addEventListener("keydown", (e) => {
   }
 });
 
-flatpickr(".modal_input_date", {
-  enableTime: true,
-  dateFormat: "Y-m-d\\TH:i",
-  time_24hr: true,
-  locale: "ru",
+document.addEventListener("DOMContentLoaded", function () {
+  flatpickr(".modal_input_date", {
+    enableTime: true,
+    dateFormat: "Y-m-d\\TH:i",
+    time_24hr: true,
+    locale: "ru",
+  });
 });
